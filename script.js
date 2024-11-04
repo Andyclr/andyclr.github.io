@@ -16,18 +16,18 @@ const flipButton = document.getElementById('flip-button');
 const captureButton = document.getElementById('capture-button');
 const capturedImage = document.getElementById('captured-image');
 
-let currentStream; // To store the current stream
-let usingFrontCamera = true; // Track which camera is in use
+let currentStream; 
+let usingFrontCamera = true; 
 
-// Function to start the camera
+
 async function startCamera(facingMode = 'user') {
-    // Stop any existing stream
+
     if (currentStream) {
         currentStream.getTracks().forEach(track => track.stop());
     }
 
     try {
-        // Request access to the camera with the specified facing mode
+
         currentStream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode: facingMode }
         });
@@ -38,9 +38,8 @@ async function startCamera(facingMode = 'user') {
     }
 }
 
-// Event listener to flip the camera
 flipButton.addEventListener('click', () => {
-    // Toggle the camera mode
+
     usingFrontCamera = !usingFrontCamera;
     startCamera(usingFrontCamera ? 'user' : 'environment');
 });
@@ -50,19 +49,20 @@ captureButton.addEventListener('click', () => {
 });
 
 function captureImage() {
-    // Create a canvas element to draw the video frame
+
     const canvas = document.createElement('canvas');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    // Draw the current frame from the video onto the canvas
+
     const context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Convert the canvas content to a data URL and set it as the image source
-    const imageDataUrl = canvas.toDataURL('image/png');
+
+    const imageDataUrl = canvas.toDataURL('image/jpg');
+    localStorage.setItem("image", imageDataUrl);
     capturedImage.src = imageDataUrl;
 }
 
-// Start the front camera by default
+
 startCamera();
