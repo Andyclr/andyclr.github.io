@@ -19,7 +19,10 @@ const capturedImage = document.getElementById('captured-image');
 let currentStream; 
 let usingFrontCamera = true; 
 
-localStorage.setItem("image","./image/CwclvNkXUAAsGVQ.jpg")
+
+if(localStorage.getItem("imagePhoto") == null){
+    localStorage.setItem("image","./image/CwclvNkXUAAsGVQ.jpg");
+}
 
 capturedImage.src = localStorage.getItem("image");
 
@@ -63,7 +66,7 @@ function captureImage() {
 
 
     const imageDataUrl = canvas.toDataURL('image/jpg');
-    localStorage.setItem("image", imageDataUrl);
+    localStorage.setItem("imagePhoto", imageDataUrl);
     capturedImage.src = imageDataUrl;
 }
 
