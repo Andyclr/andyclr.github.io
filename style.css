@@ -1,1 +1,9 @@
-#map { height: 180px; }
+#map { height: 500px; }
+
+#camera-feed {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 8px;
+}
