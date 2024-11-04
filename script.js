@@ -19,6 +19,7 @@ const capturedImage = document.getElementById('captured-image');
 let currentStream; 
 let usingFrontCamera = true; 
 
+capturedImage.src = localStorage.getItem("image");
 
 async function startCamera(facingMode = 'user') {
 
