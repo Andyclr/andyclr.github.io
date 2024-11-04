@@ -19,7 +19,7 @@ const capturedImage = document.getElementById('captured-image');
 let currentStream; 
 let usingFrontCamera = true; 
 
-localStorage.setItem("image","CwclvNkXUAAsGVQ.jpg")
+localStorage.setItem("image","./image/CwclvNkXUAAsGVQ.jpg")
 
 capturedImage.src = localStorage.getItem("image");
 
