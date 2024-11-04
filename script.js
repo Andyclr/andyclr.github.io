@@ -1,5 +1,5 @@
 "use strict";
-
+localStorage.setItem("image","./image/CwclvNkXUAAsGVQ.jpg");
 var map = L.map('map').setView([46.201398876908065, 6.145992279052731],13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -21,10 +21,12 @@ let usingFrontCamera = true;
 
 
 if(localStorage.getItem("imagePhoto") == null){
-    localStorage.setItem("image","./image/CwclvNkXUAAsGVQ.jpg");
+    capturedImage.src = localStorage.getItem("image");
+}
+else{
+    capturedImage.src = localStorage.getItem("imagePhoto");
 }
 
-capturedImage.src = localStorage.getItem("image");
 
 async function startCamera(facingMode = 'user') {
 
