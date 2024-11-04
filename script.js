@@ -13,6 +13,8 @@ var marker = L.marker([46.201398876908065, 6.145992279052731]).addTo(map);
 
 const video = document.getElementById('camera-feed');
 const flipButton = document.getElementById('flip-button');
+const captureButton = document.getElementById('capture-button');
+const capturedImage = document.getElementById('captured-image');
 
 let currentStream; // To store the current stream
 let usingFrontCamera = true; // Track which camera is in use
@@ -42,6 +44,25 @@ flipButton.addEventListener('click', () => {
     usingFrontCamera = !usingFrontCamera;
     startCamera(usingFrontCamera ? 'user' : 'environment');
 });
+
+captureButton.addEventListener('click', () => {
+    captureImage();
+});
+
+function captureImage() {
+    // Create a canvas element to draw the video frame
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // Draw the current frame from the video onto the canvas
+    const context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Convert the canvas content to a data URL and set it as the image source
+    const imageDataUrl = canvas.toDataURL('image/png');
+    capturedImage.src = imageDataUrl;
+}
 
 // Start the front camera by default
 startCamera();
