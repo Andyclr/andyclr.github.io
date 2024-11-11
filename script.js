@@ -1,6 +1,6 @@
 "use strict";
-localStorage.setItem("image","./image/CwclvNkXUAAsGVQ.jpg");
-var map = L.map('map').setView([46.201398876908065, 6.145992279052731],13);
+localStorage.setItem("image", "./image/CwclvNkXUAAsGVQ.jpg");
+var map = L.map('map').setView([46.201398876908065, 6.145992279052731], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -9,21 +9,23 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 var marker = L.marker([46.201398876908065, 6.145992279052731]).addTo(map);
+marker.bindPopup('<img id="captured-image" alt="Captured Image">')
 
+
+//Camera 
 
 const video = document.getElementById('camera-feed');
 const flipButton = document.getElementById('flip-button');
 const captureButton = document.getElementById('capture-button');
 const capturedImage = document.getElementById('captured-image');
 
-let currentStream; 
-let usingFrontCamera = true; 
+let currentStream;
+let usingFrontCamera = true;
 
-
-if(localStorage.getItem("imagePhoto") == null){
+if (localStorage.getItem("imagePhoto") == null) {
     capturedImage.src = localStorage.getItem("image");
 }
-else{
+else {
     capturedImage.src = localStorage.getItem("imagePhoto");
 }
 
