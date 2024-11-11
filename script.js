@@ -9,7 +9,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 var marker = L.marker([46.201398876908065, 6.145992279052731]).addTo(map);
-marker.bindPopup('<img id="captured-image" alt="Captured Image">')
+marker.bindPopup('<img id="captured-image" alt="Captured Image" src="image/CwclvNkXUAAsGVQ.jpg">')
 
 
 //Camera 
