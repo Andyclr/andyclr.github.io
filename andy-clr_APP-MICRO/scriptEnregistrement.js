@@ -16,27 +16,43 @@ if(localStorage.getItem("audio")){
     text = localStorage.getItem("text");
     afficherTexteTranscrit(text);
 }
-
+function getLocalStream() {
+    navigator.mediaDevices
+      .getUserMedia({ video: false, audio: true })
+      .then((stream) => {
+        window.localStream = stream; // A
+        window.localAudio.srcObject = stream; // B
+        window.localAudio.autoplay = true; // C
+      })
+      .catch((err) => {
+        console.error(`you got an error: ${err}`);
+      });
+  }
 
 
 async function startRec() {
+    audioChunks = [];
+    microActuel = getLocalStream();
+
     if (microActuel && microActuel.state === "recording") 
         {
         microActuel.stop();
-    }
-
-    microActuel = new microActuel(micro);
-
+        }
     
-    microActuel.ondataavailable = event => {
-        audioChunks.push(event.data);
-    };
+ 
     
     microActuel.onstop = async () => {
 
-        audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-        let audioFile ="./inauguration-calculateur-alps-7s.mp3"
-        await PostAudio(audioFile);
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        const blob = new Blob(chunks, { type: mediaRecorder.mimeType });
+        const audioURL = window.URL.createObjectURL(blob);
+        audio.src = audioURL;
+        console.log("recorder stopped");
+    };
+
+    microActuel.ondataavailable = event => {
+        audioChunks.push(event.data);
     };
 
     microActuel.start();
