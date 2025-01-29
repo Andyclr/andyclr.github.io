@@ -1,0 +1,53 @@
+<section id="apprentissage">
+    <h2>Apprentissage</h2>
+    
+    <div class="carte">
+        <div class="recto">
+            <p>Quel est le capital de la France ?</p>
+        </div>
+        <div class="verso">
+            <p>Paris</p>
+        </div>
+    </div>
+    
+    <button id="retournerCarte">Retourner la carte</button>
+</section>
+
+<script>
+    let retournerCarteBtn = document.getElementById('retournerCarte');
+    let carte = document.querySelector('.carte');
+
+    retournerCarteBtn.addEventListener('click', () => {
+        carte.classList.toggle('retourne');
+    });
+</script>
+
+<style>
+    .carte {
+        width: 200px;
+        height: 300px;
+        perspective: 1000px;
+    }
+    .carte .recto, .carte .verso {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: lightblue;
+        border: 1px solid #ccc;
+        font-size: 1.2rem;
+    }
+    .carte .verso {
+        transform: rotateY(180deg);
+    }
+    .carte.retourne .recto {
+        transform: rotateY(180deg);
+    }
+    .carte.retourne .verso {
+        transform: rotateY(0);
+    }
+</style>
