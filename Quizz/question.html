@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="question">
+        <h2>Section Questions</h2>
+        
+        <div id="question-photo">
+            <h3>Question Photo</h3>
+            <img src="image-question.jpg" alt="Question Image">
+            <p>Quel est le nom de cet objet ?</p>
+            <form>
+                <input type="text" placeholder="Répondre...">
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+        
+        <div id="question-audio">
+            <h3>Question Audio</h3>
+            <audio controls>
+                <source src="audio-question.mp3" type="audio/mp3">
+                Ton navigateur ne supporte pas la balise audio.
+            </audio>
+            <p>Écoutez l'audio et répondez à la question :</p>
+            <form>
+                <input type="text" placeholder="Répondre...">
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+        
+        <div id="question-mixte">
+            <h3>Question Mixte (Photo + Audio)</h3>
+            <img src="image-question.jpg" alt="Question Image">
+            <audio controls>
+                <source src="audio-question.mp3" type="audio/mp3">
+                Ton navigateur ne supporte pas la balise audio.
+            </audio>
+            <p>Que voyez-vous et entendez-vous ?</p>
+            <form>
+                <input type="text" placeholder="Répondre...">
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

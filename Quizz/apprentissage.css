@@ -1,0 +1,27 @@
+.carte {
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+}
+.carte .recto, .carte .verso {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: lightblue;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+}
+.carte .verso {
+    transform: rotateY(180deg);
+}
+.carte.retourne .recto {
+    transform: rotateY(180deg);
+}
+.carte.retourne .verso {
+    transform: rotateY(0);
+}
